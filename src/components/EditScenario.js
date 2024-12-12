@@ -256,7 +256,6 @@ const EditScenario = (props) => {
                 onElementsRemove={onElementsRemove}
                 onLoad={onLoad}
                 onDrop={onDrop}
-                onEdgeUpdate={onEdgeUpdate}
                 onDragOver={onDragOver}
                 connectionLineType="step"
                 connectionLineComponent={ConnectionLine}
