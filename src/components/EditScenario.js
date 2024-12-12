@@ -38,16 +38,19 @@ const EditScenario = (props) => {
   const [clickedElement, setClickedEment] = useState({});
   const [label, setLabel] = useState(clickedElement?.data?.label);
   const [edgeLabel, setEdgeLabel] = useState();
+  const [error, setError] = useState(null);
   const [clickedEdge, setclickedEdge] = useState();
   const onConnect = (params) => setElements((els) => addEdge(params, els));
   const onEditScenario = async () => {
     try {
       setisSaving(true);
-      await dispatch(updateScenario(elements, scenarioName, params.id));
+      dispatch(updateScenario(elements, scenarioName, params.id));
       setisSaving(false);
+      setError(null);
       history.push("/scenario");
     } catch (err) {
       setisSaving(false);
+      setError("Failed to save scenario. Please try again.");
     }
   };
   const onElementsRemove = (elementsToRemove) =>
